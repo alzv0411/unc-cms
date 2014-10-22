@@ -3,9 +3,10 @@
 = users =
 
 || *Field name* || *Type* || *Additional information* ||
-|| id || text || unique, not null, autoincrement ||
+|| user_id || number || unique, not null, autoincrement ||
 || email || text || unique, required, not null ||
 || password || text || required, not null ||
+|| group_id || number || foreign key on groups.group_id ||
 || first_name || text ||  ||
 || last_name || text ||  ||
 || register_date || date ||  ||
@@ -14,5 +15,5 @@
 = groups =
 
 || *Field name* || *Type* || *Additional information* ||
-|| id || text || unique, not null ||
+|| group_id || number || unique, not null, autoincrement ||
 || name || text || required, not null ||
