@@ -48,3 +48,11 @@
 || page_id || number || foreign key (pages.page_id) ||
 || read || number || 1 - allow, 0 - prohibit ||
 || write || number || 1 - allow, 0 - prohibit ||
+
+= attachments =
+
+|| *Field name* || *Type* || *Additional information* ||
+|| attachment_id || number || unique, not null, autoincrement ||
+|| page_id || number || foreign key (pages.page_id) ||
+|| name || text || ||
+|| filepath || text || ||
