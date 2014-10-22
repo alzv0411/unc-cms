@@ -19,3 +19,5 @@
 || *Field name* || *Type* || *Additional information* ||
 || group_id || number || unique, not null, autoincrement ||
 || name || text || required, not null ||
+
+----
