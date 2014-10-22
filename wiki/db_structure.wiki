@@ -1,0 +1,18 @@
+#summary Database structure
+
+= users =
+
+|| *Field name* || *Type* || *Additional information* ||
+|| id || text || unique, not null, autoincrement ||
+|| email || text || unique, required, not null ||
+|| password || text || required, not null ||
+|| firstname || text ||  ||
+|| lastname || text ||  ||
+|| register_date || date ||  ||
+|| last_login || date ||  ||
+
+= groups =
+
+|| *Field name* || *Type* || *Additional information* ||
+|| id || text || unique, not null ||
+|| name || text || required, not null ||
