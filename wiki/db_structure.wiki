@@ -59,14 +59,6 @@
 || name || text || ||
 || filepath || text || ||
 
-= attachments =
-
-|| *Field name* || *Type* || *Additional information* ||
-|| attachment_id || number || unique, not null, autoincrement ||
-|| page_id || number || foreign key (pages.page_id) ||
-|| name || text || ||
-|| filepath || text || ||
-
 = settings = 
 
 || *Field name* || *Type* || *Additional information* ||
