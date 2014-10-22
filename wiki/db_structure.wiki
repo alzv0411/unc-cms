@@ -46,5 +46,5 @@
 || *Field name* || *Type* || *Additional information* ||
 || group_id || number || foreign key (groups.group_id) ||
 || page_id || number || foreign key (pages.page_id) ||
-|| read || number || ||
-|| edit || number || ||
+|| read || number || 1 - allow, 0 - prohibit ||
+|| write || number || 1 - allow, 0 - prohibit ||
