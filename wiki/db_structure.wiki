@@ -1,4 +1,4 @@
-#summary Database structure
+#summary Структура базы данных
 
 = users =
 
@@ -22,6 +22,7 @@
 
 || *Field name* || *Type* || *Additional information* ||
 || page_id || number || unique, not null, autoincrement ||
+|| parent_id || number || not null ||
 || title || text || required, not null ||
 || content || clob ||  ||
 || created_by || number || foreign key (users.user_id)  ||
@@ -33,9 +34,17 @@
 
 || *Field name* || *Type* || *Additional information* ||
 || comment_id || number || unique, not null, autoincrement ||
-|| page_id || number || not null, foreign key (pages.page_id) ||
+|| page_id || number || foreign key (pages.page_id) ||
 || comment || clob ||  ||
 || created_by || number || foreign key (users.user_id)  ||
 || created_when || date ||  ||
 || modified_by || number || foreign key (users.user_id)  ||
 || modified_when || date ||  ||
+
+= rights =
+
+|| *Field name* || *Type* || *Additional information* ||
+|| group_id || number || foreign key (groups.group_id) ||
+|| page_id || number || foreign key (pages.page_id) ||
+|| read || number || ||
+|| edit || number || ||
