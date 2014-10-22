@@ -16,6 +16,7 @@
 
 || *Field name* || *Type* || *Additional information* ||
 || group_id || number || unique, not null, autoincrement ||
+|| parent_id || number || unique, not null, autoincrement ||
 || name || text || required, not null ||
 
 = pages =
@@ -29,6 +30,7 @@
 || created_when || date ||  ||
 || modified_by || number || foreign key (users.user_id)  ||
 || modified_when || date ||  ||
+|| properties || text || ||
 
 = comments =
 
