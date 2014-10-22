@@ -33,7 +33,7 @@
 
 || *Field name* || *Type* || *Additional information* ||
 || comment_id || number || unique, not null, autoincrement ||
-|| page_id || number || not null, foreign key (users.user_id) ||
+|| page_id || number || not null, foreign key (pages.page_id) ||
 || comment || clob ||  ||
 || created_by || number || foreign key (users.user_id)  ||
 || created_when || date ||  ||
