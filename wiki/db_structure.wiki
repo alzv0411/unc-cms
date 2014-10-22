@@ -6,8 +6,8 @@
 || id || text || unique, not null, autoincrement ||
 || email || text || unique, required, not null ||
 || password || text || required, not null ||
-|| firstname || text ||  ||
-|| lastname || text ||  ||
+|| first_name || text ||  ||
+|| last_name || text ||  ||
 || register_date || date ||  ||
 || last_login || date ||  ||
 
