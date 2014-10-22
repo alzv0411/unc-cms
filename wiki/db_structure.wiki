@@ -12,6 +12,8 @@
 || register_date || date ||  ||
 || last_login || date ||  ||
 
+----
+
 = groups =
 
 || *Field name* || *Type* || *Additional information* ||
