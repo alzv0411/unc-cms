@@ -6,13 +6,11 @@
 || user_id || number || unique, not null, autoincrement ||
 || email || text || unique, required, not null ||
 || password || text || required, not null ||
-|| group_id || number || foreign key on groups.group_id ||
+|| group_id || number || required, not null, foreign key (groups.group_id) ||
 || first_name || text ||  ||
 || last_name || text ||  ||
-|| register_date || date ||  ||
+|| register_when || date ||  ||
 || last_login || date ||  ||
-
-----
 
 = groups =
 
@@ -20,4 +18,24 @@
 || group_id || number || unique, not null, autoincrement ||
 || name || text || required, not null ||
 
-----
+= pages =
+
+|| *Field name* || *Type* || *Additional information* ||
+|| page_id || number || unique, not null, autoincrement ||
+|| title || text || required, not null ||
+|| content || clob ||  ||
+|| created_by || number || foreign key (users.user_id)  ||
+|| created_when || date ||  ||
+|| modified_by || number || foreign key (users.user_id)  ||
+|| modified_when || date ||  ||
+
+= comments =
+
+|| *Field name* || *Type* || *Additional information* ||
+|| comment_id || number || unique, not null, autoincrement ||
+|| page_id || number || not null, foreign key (users.user_id) ||
+|| comment || clob ||  ||
+|| created_by || number || foreign key (users.user_id)  ||
+|| created_when || date ||  ||
+|| modified_by || number || foreign key (users.user_id)  ||
+|| modified_when || date ||  ||
