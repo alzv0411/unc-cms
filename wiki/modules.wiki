@@ -2,14 +2,14 @@
 
 = Modules =
 
-# Модуль авторизации и аутенфикации (Core part)
-# Oracle DAO (Core part)
-# POJO Object Rendering (UI Part) 
-# Dispatcher Servlet (Core part)
-# Custom JS Tree (http://www.jstree.com/) (UI Part)
-# Admin panel (http://www.tinymce.com/) (UI Part) /Страницы/Пользователя/
-# Проверка прав (Core part)
-# Export/Import страниц и пользователей
-# Search engine
-# breadcrumbs (UI Part)
-# comment engine
+ # Модуль авторизации и аутенфикации (Core part)
+ # Oracle DAO (Core part)
+ # POJO Object Rendering (UI Part) 
+ # Dispatcher Servlet (Core part)
+ # Custom JS Tree (http://www.jstree.com/) (UI Part)
+ # Admin panel (http://www.tinymce.com/) (UI Part) /Страницы/Пользователя/
+ # Проверка прав (Core part)
+ # Export/Import страниц и пользователей
+ # Search engine
+ # breadcrumbs (UI Part)
+ # comment engine
