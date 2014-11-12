@@ -1,0 +1,22 @@
+#summary Инструменты и технологии
+
+= JavaEE 5 = 
+http://docs.oracle.com/javaee/5/tutorial/doc
+
+https://docs.oracle.com/javaee/5/tutorial/doc/figures/overview-j2eeArchitecture.gif
+
+= GlassFish Server Open Source Edition  = 
+https://glassfish.java.net/
+[https://glassfish.java.net/docs/4.0/quick-start-guide.pdf Quick Start for Basic Features]
+
+= NetBeans =
+https://netbeans.org/
+
+= Maven = 
+http://maven.apache.org
+[http://maven.apache.org/guides/getting-started/maven-in-five-minutes.html Maven in 5 Minutes]
+
+= Subversion (SVN) = 
+https://subversion.apache.org/
+http://svnbook.red-bean.com/nightly/ru/index.html
+WIndows-клиент - http://tortoisesvn.net
