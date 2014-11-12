@@ -5,8 +5,8 @@
 || Authentication и authorization || Аутентификация и авторизация || [https://docs.oracle.com/javaee/5/tutorial/doc/bnafd.html Servlet], [https://docs.oracle.com/javaee/5/tutorial/doc/bnbls.html EJB] ,[https://docs.oracle.com/javaee/5/tutorial/doc/bnagb.html Filter, FilterChain] ||
 || Tables and parameters rendering || Отображение данных || [https://docs.oracle.com/javaee/5/tutorial/doc/bnagx.html JSP], [https://docs.oracle.com/javaee/5/tutorial/doc/bnakc.html JSTL], javascript, jquery ||
 || Hierarchy rendering || Отображение иерархии данных || javascript, jquery, http://www.jstree.com ||
-|| Admin panel || Панель администрирования || [https://docs.oracle.com/javaee/5/tutorial/doc/bnagx.html JSP], [https://docs.oracle.com/javaee/5/tutorial/doc/bnakc.html JSTL], javascript, jquery (GWT?) ||
-|| Breadcrumbs || Навигационная цепочка || javascript, jquery, http://www.jstree.com ||
-|| Comments || Отображение комментариев || javascript, jquery, http://www.jstree.com ||
+|| Admin panel || Панель администрирования || [https://docs.oracle.com/javaee/5/tutorial/doc/bnagx.html JSP], [https://docs.oracle.com/javaee/5/tutorial/doc/bnakc.html JSTL], javascript, jquery, http://www.tinymce.com, (GWT?) ||
+|| Breadcrumbs || Навигационная цепочка || javascript, jquery||
+|| Comments || Отображение комментариев || javascript, jquery, ||
 || Search engine || Поиск данных || SQL, JDBC, java.sql, [https://docs.oracle.com/javaee/5/tutorial/doc/bnbls.html EJB] ||
 || Export/Import || Экспорт/импорт сущностей || SQL, XML, [https://docs.oracle.com/javase/tutorial/jaxp/ JAXP], [https://docs.oracle.com/javaee/5/tutorial/doc/bnbls.html EJB] ||
