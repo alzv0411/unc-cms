@@ -34,6 +34,11 @@ public class User {
     private Date lastLogin;
 
     public User() {
+        
+        ///sfdafdsaddasd
+        
+        
+        
     }
 
     public User(long userId, String email, String password, long groupId, String firstName, String lastName, Date registerWhen, Date lastLogin) {
