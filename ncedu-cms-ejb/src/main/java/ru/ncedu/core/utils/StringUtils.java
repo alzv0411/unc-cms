@@ -24,6 +24,11 @@ public final class StringUtils {
     private StringUtils() {
     }
     
+    /**
+     * Checks string
+     * @param str
+     * @return 
+     */
     public static boolean isEmpty(String str) {
         return str == null || str.length() == 0;
     }
