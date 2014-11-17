@@ -9,9 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Pages</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Links:</h1>
+        
+        <p><a href="/ncedu-cms-web/user">Users</a><p>
+        
     </body>
 </html>
