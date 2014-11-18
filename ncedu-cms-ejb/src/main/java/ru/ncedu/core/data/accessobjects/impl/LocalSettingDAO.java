@@ -39,7 +39,7 @@ public class LocalSettingDAO implements SettingDAO {
     }
     
     @Override
-    public int insertUser(Setting entity) {
+    public int insert(Setting entity) {
         if (entity == null) {
             return 0;
         }
@@ -56,7 +56,7 @@ public class LocalSettingDAO implements SettingDAO {
     }
     
     @Override
-    public boolean updateUser (Setting entity) {
+    public boolean update (Setting entity) {
         if (entity == null) {
             return false;
         }
@@ -73,7 +73,7 @@ public class LocalSettingDAO implements SettingDAO {
     }
     
     @Override
-    public boolean deleteUser(Setting entity) {
+    public boolean delete(Setting entity) {
         if (entity == null) {
             return false;
         }
@@ -82,7 +82,7 @@ public class LocalSettingDAO implements SettingDAO {
         
         for (Iterator<Setting> it = localStorage.iterator(); it.hasNext();) {
             Setting setting = it.next();
-            if (setting.getName() == entity.getName()) {
+            if (setting.getName().equals(entity.getName())) {
                 it.remove();
                 return true;
             }
@@ -99,11 +99,6 @@ public class LocalSettingDAO implements SettingDAO {
             }
         }
         
-        return null;
-    }
-    
-    @Override
-    public Setting findById(long id){
         return null;
     }
     

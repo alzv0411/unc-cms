@@ -22,10 +22,10 @@ import ru.ncedu.core.data.entities.Setting;
  *
  * @author daemon
  */
-public interface SettingDAO extends CRUD<Setting> {
-    int insertUser(Setting entity);
-    boolean updateUser(Setting entity);
-    boolean deleteUser(Setting entity);
+public interface SettingDAO {
+    int insert(Setting entity);
+    boolean update(Setting entity);
+    boolean delete(Setting entity);
     List<Setting> findAll();    
     Setting findByName(String name);
 }
