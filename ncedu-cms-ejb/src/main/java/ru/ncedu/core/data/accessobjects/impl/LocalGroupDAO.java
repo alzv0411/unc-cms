@@ -15,6 +15,10 @@
  */
 package ru.ncedu.core.data.accessobjects.impl;
 
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import ru.ncedu.core.data.accessobjects.GroupDAO;
 import ru.ncedu.core.data.entities.Group;
@@ -24,30 +28,83 @@ import ru.ncedu.core.data.entities.Group;
  * @author Alexander Zvyagintsev <alzv0411@gmail.com>
  */
 public class LocalGroupDAO implements GroupDAO {
-
+    
+    private static final List<Group> localStorage = Collections.synchronizedList(new ArrayList<Group>());
+    static {
+        localStorage.add(new Group(1,10,"group1"));
+        localStorage.add(new Group(2,20,"group2"));
+        localStorage.add(new Group(3,30,"group3"));
+        localStorage.add(new Group(4,40,"group4"));
+        localStorage.add(new Group(5,50,"group5"));
+    }
+    
     @Override
     public int insertUser(Group entity) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (entity == null) {
+            return 0;
+        }
+
+        Group group = findById(entity.getGroupId());
+
+        if (group != null) {
+            return -1;
+        }
+
+        localStorage.add(entity);
+
+        return 1;
     }
 
     @Override
     public boolean updateUser(Group entity) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (entity == null) {
+            return false;
+        }
+
+        Group group = findById(entity.getGroupId());
+
+        if (group == null) {
+            return false;
+        }
+
+        group.setGroupId(entity.getGroupId());
+        group.setParentId(entity.getParentId());
+        group.setName(entity.getName());
+
+        return true;
     }
 
     @Override
     public boolean deleteUser(Group entity) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (entity == null) {
+            return false;
+        }
+        
+        for (Iterator<Group> it = localStorage.iterator(); it.hasNext();) {
+            Group group = it.next();
+            if (group.getGroupId() == entity.getGroupId()) {
+                it.remove();
+                return true;
+            }
+        }
+        
+        return false;
     }
 
     @Override
     public Group findById(long id) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        for (Group group : localStorage) {
+            if (group.getGroupId() == id) {
+                return group;
+            }
+        }
+
+        return null;
     }
 
     @Override
     public List<Group> findAll() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return localStorage;
     }
     
 }

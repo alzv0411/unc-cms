@@ -19,6 +19,7 @@ import ru.ncedu.core.data.accessobjects.GroupDAO;
 import ru.ncedu.core.data.accessobjects.UserDAO;
 import ru.ncedu.core.data.accessobjects.SettingDAO;
 import ru.ncedu.core.data.accessobjects.impl.LocalUserDAO;
+import ru.ncedu.core.data.accessobjects.impl.LocalGroupDAO;
 import ru.ncedu.core.data.accessobjects.impl.LocalSettingDAO;
 import ru.ncedu.core.data.factories.DAOFactory;
 
@@ -35,7 +36,7 @@ public class LocalDAOFactory extends DAOFactory {
 
     @Override
     public GroupDAO getGroupDAO() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new LocalGroupDAO();
     }
     
     @Override
