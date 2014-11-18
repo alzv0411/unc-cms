@@ -15,6 +15,7 @@
  */
 package ru.ncedu.core.data.factories;
 
+import ru.ncedu.core.data.accessobjects.CommentDAO;
 import ru.ncedu.core.data.accessobjects.GroupDAO;
 import ru.ncedu.core.data.accessobjects.UserDAO;
 import ru.ncedu.core.data.accessobjects.SettingDAO;
@@ -36,6 +37,8 @@ public abstract class DAOFactory {
     public abstract GroupDAO getGroupDAO();
     
     public abstract SettingDAO getSettingDAO();
+    
+    public abstract CommentDAO getCommentDAO();
 
     public static DAOFactory getDAOFactory(DAOType daoType) {
         switch (daoType) {
