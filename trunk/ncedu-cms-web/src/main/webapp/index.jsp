@@ -14,10 +14,10 @@
     <body>
         <h1>Links:</h1>
         
-        <p><a href="/ncedu-cms-web/user">Users</a><p>
-        <p><a href="/ncedu-cms-web/setting">Settings</a><p>
-        <p><a href="/ncedu-cms-web/group">Groups</a><p>
-        <p><a href="/ncedu-cms-web/comment">Comments</a><p>    
+
+        <p><a href="/ncedu-cms-web/attachment">Attachments</a><p>
+  
         
+
     </body>
 </html>

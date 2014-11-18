@@ -15,7 +15,11 @@
  */
 package ru.ncedu.core.data.factories;
 
+
+import ru.ncedu.core.data.accessobjects.AttachmentDAO;
+
 import ru.ncedu.core.data.accessobjects.CommentDAO;
+
 import ru.ncedu.core.data.accessobjects.GroupDAO;
 import ru.ncedu.core.data.accessobjects.UserDAO;
 import ru.ncedu.core.data.accessobjects.SettingDAO;
@@ -25,7 +29,7 @@ import ru.ncedu.core.data.factories.impl.OracleDAOFactory;
 /**
  * Abstract class DAO Factory.
  * 
- * @author Alexander Zvyagintsev <alzv0411@gmail.com>
+ * @author Viktor
  */
 public abstract class DAOFactory {
 
@@ -35,10 +39,15 @@ public abstract class DAOFactory {
     public abstract UserDAO getUserDAO();
 
     public abstract GroupDAO getGroupDAO();
+
+    
+    public abstract AttachmentDAO getAttachmentDAO();
+
     
     public abstract SettingDAO getSettingDAO();
     
     public abstract CommentDAO getCommentDAO();
+
 
     public static DAOFactory getDAOFactory(DAOType daoType) {
         switch (daoType) {

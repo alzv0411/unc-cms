@@ -15,14 +15,20 @@
  */
 package ru.ncedu.core.data.factories.impl;
 
+
+import ru.ncedu.core.data.accessobjects.AttachmentDAO;
+
 import ru.ncedu.core.data.accessobjects.CommentDAO;
+
 import ru.ncedu.core.data.accessobjects.GroupDAO;
-import ru.ncedu.core.data.accessobjects.UserDAO;
 import ru.ncedu.core.data.accessobjects.SettingDAO;
+
+import ru.ncedu.core.data.accessobjects.UserDAO;
+import ru.ncedu.core.data.accessobjects.impl.LocalAttachmentDAO;
+
 import ru.ncedu.core.data.accessobjects.impl.LocalCommentDAO;
+
 import ru.ncedu.core.data.accessobjects.impl.LocalUserDAO;
-import ru.ncedu.core.data.accessobjects.impl.LocalGroupDAO;
-import ru.ncedu.core.data.accessobjects.impl.LocalSettingDAO;
 import ru.ncedu.core.data.factories.DAOFactory;
 
 /**
@@ -38,17 +44,24 @@ public class LocalDAOFactory extends DAOFactory {
 
     @Override
     public GroupDAO getGroupDAO() {
-        return new LocalGroupDAO();
+        throw new UnsupportedOperationException("Not supported yet.");
     }
-    
+
+    @Override
+    public AttachmentDAO getAttachmentDAO() {
+         return new LocalAttachmentDAO();
+    }
+
     @Override
     public SettingDAO getSettingDAO() {
-        return new LocalSettingDAO();
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public CommentDAO getCommentDAO() {
         return new LocalCommentDAO();
     }
+    
+    
     
 }
