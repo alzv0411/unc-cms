@@ -17,6 +17,7 @@ package ru.ncedu.core.data.factories.impl;
 
 import ru.ncedu.core.data.accessobjects.GroupDAO;
 import ru.ncedu.core.data.accessobjects.UserDAO;
+import ru.ncedu.core.data.accessobjects.SettingDAO;
 import ru.ncedu.core.data.factories.DAOFactory;
 
 /**
@@ -33,6 +34,11 @@ public class OracleDAOFactory extends DAOFactory {
     @Override
     public GroupDAO getGroupDAO() {
         throw new UnsupportedOperationException("Not supported yet."); 
+    }
+    
+    @Override
+    public SettingDAO getSettingDAO() {
+        throw new UnsupportedOperationException("Not supported yet.");    
     }
     
 }

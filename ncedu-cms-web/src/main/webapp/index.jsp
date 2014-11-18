@@ -15,6 +15,7 @@
         <h1>Links:</h1>
         
         <p><a href="/ncedu-cms-web/user">Users</a><p>
+        <p><a href="/ncedu-cms-web/setting">Settings</a><p>
         
     </body>
 </html>
