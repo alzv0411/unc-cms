@@ -15,7 +15,6 @@
  */
 package ru.ncedu.core.data.accessobjects.impl;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -31,15 +30,15 @@ public class LocalGroupDAO implements GroupDAO {
     
     private static final List<Group> localStorage = Collections.synchronizedList(new ArrayList<Group>());
     static {
-        localStorage.add(new Group(1,10,"group1"));
-        localStorage.add(new Group(2,20,"group2"));
-        localStorage.add(new Group(3,30,"group3"));
-        localStorage.add(new Group(4,40,"group4"));
-        localStorage.add(new Group(5,50,"group5"));
+        localStorage.add(new Group(1,0,"group1"));
+        localStorage.add(new Group(2,1,"group2"));
+        localStorage.add(new Group(3,1,"group3"));
+        localStorage.add(new Group(4,2,"group4"));
+        localStorage.add(new Group(5,3,"group5"));
     }
     
     @Override
-    public int insertUser(Group entity) {
+    public int insert(Group entity) {
         if (entity == null) {
             return 0;
         }
@@ -56,7 +55,7 @@ public class LocalGroupDAO implements GroupDAO {
     }
 
     @Override
-    public boolean updateUser(Group entity) {
+    public boolean update(Group entity) {
         if (entity == null) {
             return false;
         }
@@ -75,7 +74,7 @@ public class LocalGroupDAO implements GroupDAO {
     }
 
     @Override
-    public boolean deleteUser(Group entity) {
+    public boolean delete(Group entity) {
         if (entity == null) {
             return false;
         }

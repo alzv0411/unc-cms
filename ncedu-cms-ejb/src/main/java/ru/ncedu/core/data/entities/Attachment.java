@@ -5,8 +5,6 @@
  */
 package ru.ncedu.core.data.entities;
 
-import java.sql.Date;
-
 /**
  *
  * @author Viktor
@@ -48,7 +46,7 @@ public class Attachment {
         return name;
     }
     
-    public void setName(String attachmentId) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -60,6 +58,7 @@ public class Attachment {
         return filepath;
     }
 
+    @Override
      public String toString() {
         return "Atatchment{" + "attachmentId=" + attachmentId + ", pageId=" + pageId + ", name=" + name + ", filepath=" + filepath + '}';
     }

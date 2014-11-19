@@ -39,17 +39,17 @@ public class LocalUserDAOTest {
         
         User entity = null;
         int expResult = 0;
-        int result = instance.insertUser(entity);
+        int result = instance.insert(entity);
         assertEquals(expResult, result);
         
         entity = new User(1L, null, null, 0L, null, null, null, null);
         expResult = -1;
-        result = instance.insertUser(entity);
+        result = instance.insert(entity);
         assertEquals(expResult, result);
         
         entity.setUserId(101L);
         expResult = 1;
-        result = instance.insertUser(entity);
+        result = instance.insert(entity);
         assertEquals(expResult, result);
     }
 
@@ -61,13 +61,13 @@ public class LocalUserDAOTest {
         UserDAO instance = new LocalUserDAO();
         
         User entity = null;
-        assertFalse(instance.updateUser(entity));
+        assertFalse(instance.update(entity));
         
         entity = new User(1001L, null, null, 0L, null, null, null, null);
-        assertFalse(instance.updateUser(entity));
+        assertFalse(instance.update(entity));
         
         entity = new User(5L, null, null, 0L, null, null, null, null);
-        assertTrue(instance.updateUser(entity));
+        assertTrue(instance.update(entity));
     }
 
     /**
@@ -78,13 +78,13 @@ public class LocalUserDAOTest {
         UserDAO instance = new LocalUserDAO();
         
         User entity = null;
-        assertFalse(instance.deleteUser(entity));
+        assertFalse(instance.delete(entity));
         
         entity = new User(1001L, null, null, 0L, null, null, null, null);
-        assertFalse(instance.deleteUser(entity));
+        assertFalse(instance.delete(entity));
         
         entity = new User(4L, null, null, 0L, null, null, null, null);
-        assertTrue(instance.deleteUser(entity));
+        assertTrue(instance.delete(entity));
     }
 
     /**

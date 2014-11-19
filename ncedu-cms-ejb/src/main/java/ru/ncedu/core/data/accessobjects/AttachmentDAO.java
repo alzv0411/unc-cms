@@ -5,7 +5,6 @@
  */
 package ru.ncedu.core.data.accessobjects;
 
-import java.util.List;
 import ru.ncedu.core.data.entities.Attachment;
 
 
@@ -13,10 +12,6 @@ import ru.ncedu.core.data.entities.Attachment;
  *
  * @author Viktor 
 */
-public interface AttachmentDAO  {
-    int insert(Attachment entity);
-    boolean update(Attachment entity);
-    boolean delete(Attachment entity);
-    Attachment findById(long id);
-    List<Attachment> findAll();
+public interface AttachmentDAO extends CRUD<Attachment> {
+
 }
