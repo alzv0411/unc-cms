@@ -22,9 +22,9 @@ import java.util.List;
  * @author Alexander Zvyagintsev <alzv0411@gmail.com>
  */
 public interface CRUD<Entity extends Object> {
-    int insertUser(Entity entity);
-    boolean updateUser(Entity entity);
-    boolean deleteUser(Entity entity);
+    int insert(Entity entity);
+    boolean update(Entity entity);
+    boolean delete(Entity entity);
     Entity findById(long id);
     List<Entity> findAll();
 }

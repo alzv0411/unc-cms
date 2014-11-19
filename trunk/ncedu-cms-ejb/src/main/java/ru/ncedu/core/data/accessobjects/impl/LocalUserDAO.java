@@ -39,7 +39,7 @@ public class LocalUserDAO implements UserDAO {
     }
 
     @Override
-    public int insertUser(User entity) {
+    public int insert(User entity) {
         if (entity == null) {
             return 0;
         }
@@ -56,7 +56,7 @@ public class LocalUserDAO implements UserDAO {
     }
 
     @Override
-    public boolean updateUser(User entity) {
+    public boolean update(User entity) {
         if (entity == null) {
             return false;
         }
@@ -79,7 +79,7 @@ public class LocalUserDAO implements UserDAO {
     }
 
     @Override
-    public boolean deleteUser(User entity) {
+    public boolean delete(User entity) {
         if (entity == null) {
             return false;
         }
