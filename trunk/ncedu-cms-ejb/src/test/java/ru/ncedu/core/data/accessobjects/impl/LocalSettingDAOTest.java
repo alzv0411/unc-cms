@@ -32,7 +32,7 @@ public class LocalSettingDAOTest {
         int result = instance.insert(entity);
         assertEquals(expResult, result);
         
-        entity = new Setting("foo", "bar");
+        entity = new Setting("language", "en");
         expResult = -1;
         result = instance.insert(entity);
         assertEquals(expResult, result);
