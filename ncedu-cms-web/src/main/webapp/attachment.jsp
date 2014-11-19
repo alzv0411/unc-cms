@@ -10,28 +10,26 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-           <title>Users ${attachment.firstName}</title>
+           <title>Users ${attach.name}</title>
     </head>
      <body>
         <table border="1">
             <tr>
                 <td>Attach ID:</td>
-                <td>${attachment.attachmentId}</td>
+                <td>${attach.attachmentId}</td>
             </tr>
             <tr>
                 <td>Page ID</td>
-                <td>${attachment.pageId}</td>
+                <td>${attach.pageId}</td>
             </tr>
             <tr>
                 <td>Name</td>
-                <td>${attachment.name}</td>
+                <td>${attach.name}</td>
             </tr>
             <tr>
                 <td>filepath:</td>
-                <td>${attachment.filepath}</td>
-            </tr>
-            <tr>
-   
+                <td>${attach.filepath}</td>
+            </tr>   
         </table>
     </body>
 </html>
