@@ -22,8 +22,7 @@ import ru.ncedu.core.data.entities.Comment;
  *
  * @author Roman Semenov <romansemenov3@gmail.com>
  */
-public interface CommentDAO {
-    List<Comment> findAll();
-    Comment findById(long commentId);
+public interface CommentDAO extends CRUD<Comment> {
+        
 }
 

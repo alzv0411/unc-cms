@@ -18,6 +18,7 @@ package ru.ncedu.core.data.accessobjects.impl;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import ru.ncedu.core.data.accessobjects.CommentDAO;
 import ru.ncedu.core.data.entities.Comment;
@@ -40,6 +41,78 @@ public class LocalCommentDAO implements CommentDAO {
         localStorage.add(new Comment(4L, 0L, "UnsupportedPage3", 0L, new Date(System.currentTimeMillis()), 0L, new Date(System.currentTimeMillis())));
         localStorage.add(new Comment(5L, 0L, "UnsupportedPage4", 0L, new Date(System.currentTimeMillis()), 0L, new Date(System.currentTimeMillis())));
         localStorage.add(new Comment(6L, 0L, "UnsupportedPage5", 0L, new Date(System.currentTimeMillis()), 0L, new Date(System.currentTimeMillis())));        
+    }
+    
+    /**
+     * Inserts value in database
+     * @param entity - value to insert
+     * @return -1 if value already exists</br>0 if value is nuul</br>1 if valeu inserted
+     */
+    @Override
+    public int insert(Comment entity) {
+        if (entity == null) {
+            return 0;
+        }
+
+        Comment comment = findById(entity.getCommentId());
+
+        if (comment != null) {
+            return -1;
+        }
+
+        localStorage.add(entity);
+
+        return 1;
+    }
+
+    /**
+     * Updates value in database
+     * @param entity - value to update
+     * @return false if value is null or not exists
+     */
+    @Override
+    public boolean update(Comment entity) {
+        if (entity == null) {
+            return false;
+        }
+
+        Comment comment = findById(entity.getCommentId());
+
+        if (comment == null) {
+            return false;
+        }
+
+        comment.setCommentId(entity.getCommentId());
+        comment.setPageId(entity.getPageId());
+        comment.setComment(entity.getComment());
+        comment.setCreatedBy(entity.getCreatedBy());
+        comment.setCreatedWhen(entity.getCreatedWhen());
+        comment.setModifiedBy(entity.getModifiedBy());
+        comment.setModifiedWhen(entity.getModifiedWhen());
+        
+        return true;
+    }
+
+    /**
+     * Deletes value from database
+     * @param entity - value to detele
+     * @return false if value is null or not exists
+     */
+    @Override
+    public boolean delete(Comment entity) {
+        if (entity == null) {
+            return false;
+        }
+        
+        for (Iterator<Comment> it = localStorage.iterator(); it.hasNext();) {
+            Comment user = it.next();
+            if (user.getCommentId() == entity.getCommentId()) {
+                it.remove();
+                return true;
+            }
+        }
+        
+        return false;
     }
     
     /**
