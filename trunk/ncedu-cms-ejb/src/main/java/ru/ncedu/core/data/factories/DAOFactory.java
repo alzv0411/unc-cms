@@ -21,6 +21,7 @@ import ru.ncedu.core.data.accessobjects.AttachmentDAO;
 import ru.ncedu.core.data.accessobjects.CommentDAO;
 
 import ru.ncedu.core.data.accessobjects.GroupDAO;
+import ru.ncedu.core.data.accessobjects.PageDAO;
 import ru.ncedu.core.data.accessobjects.UserDAO;
 import ru.ncedu.core.data.accessobjects.SettingDAO;
 import ru.ncedu.core.data.factories.impl.LocalDAOFactory;
@@ -37,13 +38,13 @@ public abstract class DAOFactory {
     // created. The concrete factories will have to 
     // implement these methods.
     public abstract UserDAO getUserDAO();
+    
+    public abstract PageDAO getPageDAO();
 
     public abstract GroupDAO getGroupDAO();
-
-    
+  
     public abstract AttachmentDAO getAttachmentDAO();
 
-    
     public abstract SettingDAO getSettingDAO();
     
     public abstract CommentDAO getCommentDAO();
