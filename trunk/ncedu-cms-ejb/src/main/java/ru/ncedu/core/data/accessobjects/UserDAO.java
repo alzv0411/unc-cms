@@ -22,5 +22,5 @@ import ru.ncedu.core.data.entities.User;
  * @author Alexander Zvyagintsev <alzv0411@gmail.com>
  */
 public interface UserDAO extends CRUD<User> {
-    
+    User findByEmail(String email); //Find by login equivalent
 }
