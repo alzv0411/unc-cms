@@ -42,7 +42,7 @@ public class LocalUserDAOTest {
         int result = instance.insert(entity);
         assertEquals(expResult, result);
         
-        entity = new User(1L, null, null, 0L, null, null, null, null);
+        entity = new User(1L, "user@ncedu.ru", null, 0L, null, null, null, null);
         expResult = -1;
         result = instance.insert(entity);
         assertEquals(expResult, result);
@@ -66,7 +66,7 @@ public class LocalUserDAOTest {
         entity = new User(1001L, null, null, 0L, null, null, null, null);
         assertFalse(instance.update(entity));
         
-        entity = new User(5L, null, null, 0L, null, null, null, null);
+        entity = new User(5L, "user@ncedu.ru", null, 0L, null, null, null, null);
         assertTrue(instance.update(entity));
     }
 
@@ -83,7 +83,7 @@ public class LocalUserDAOTest {
         entity = new User(1001L, null, null, 0L, null, null, null, null);
         assertFalse(instance.delete(entity));
         
-        entity = new User(4L, null, null, 0L, null, null, null, null);
+        entity = new User(4L, "user@ncedu.ru", null, 0L, null, null, null, null);
         assertTrue(instance.delete(entity));
     }
 
@@ -114,4 +114,23 @@ public class LocalUserDAOTest {
         assertTrue(result.size() > 0);
     }
     
+    /**
+     * Test of findByEmail method, of class LocalUserDAO.
+     */
+    @Test
+    public void testFindByEmail() {
+        UserDAO instance = new LocalUserDAO();
+        
+        String email = null;
+        User result = instance.findByEmail(email);
+        assertNull(result);
+        
+        email = "wrong_email";
+        result = instance.findByEmail(email);
+        assertNull(result);
+        
+        email = "admin@ncedu.ru";
+        result = instance.findByEmail(email);
+        assertNotNull(result);
+    }
 }

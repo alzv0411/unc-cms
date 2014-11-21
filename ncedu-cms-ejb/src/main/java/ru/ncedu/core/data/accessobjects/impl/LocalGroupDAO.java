@@ -30,12 +30,17 @@ public class LocalGroupDAO implements GroupDAO {
     
     private static final List<Group> localStorage = Collections.synchronizedList(new ArrayList<Group>());
     static {
-        localStorage.add(new Group(1,0,"group1"));
-        localStorage.add(new Group(2,1,"group2"));
-        localStorage.add(new Group(3,1,"group3"));
+        localStorage.add(new Group(1,0,"Admins"));
+        localStorage.add(new Group(2,1,"Moders"));
+        localStorage.add(new Group(3,1,"Others"));
         localStorage.add(new Group(4,2,"group4"));
         localStorage.add(new Group(5,3,"group5"));
     }
+    
+    /**
+     * Group for anonymous users
+     */
+    public static final Group GUESTS = new Group(0L, 0L, "Guests");
     
     @Override
     public int insert(Group entity) {

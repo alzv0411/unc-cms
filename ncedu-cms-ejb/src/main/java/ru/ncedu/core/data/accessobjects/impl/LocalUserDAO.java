@@ -22,6 +22,7 @@ import java.util.Iterator;
 import java.util.List;
 import ru.ncedu.core.data.accessobjects.UserDAO;
 import ru.ncedu.core.data.entities.User;
+import ru.ncedu.core.utils.Encrypt;
 
 /**
  *
@@ -31,13 +32,18 @@ public class LocalUserDAO implements UserDAO {
 
     private static final List<User> localStorage = Collections.synchronizedList(new ArrayList<User>());
     static {
-        localStorage.add(new User(1L, "1@ncedu.ru", "123", 0L, "User1", "User1", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis())));
-        localStorage.add(new User(2L, "2@ncedu.ru", "123", 0L, "User2", "User2", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis())));
-        localStorage.add(new User(3L, "3@ncedu.ru", "123", 0L, "User3", "User3", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis())));
-        localStorage.add(new User(4L, "4@ncedu.ru", "123", 0L, "User4", "User4", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis())));
-        localStorage.add(new User(5L, "5@ncedu.ru", "123", 0L, "User5", "User5", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis())));
+        localStorage.add(new User(1L, "admin@ncedu.ru", Encrypt.getHash("Admin"), 0L, "Admin", "Admin", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis())));
+        localStorage.add(new User(2L, "moder@ncedu.ru", Encrypt.getHash("Moder"), 0L, "Moder", "Moder", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis())));
+        localStorage.add(new User(3L, "user1@ncedu.ru", Encrypt.getHash("User1"), 0L, "User1", "User1", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis())));
+        localStorage.add(new User(4L, "user2@ncedu.ru", Encrypt.getHash("User2"), 0L, "User2", "User2", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis())));
+        localStorage.add(new User(5L, "user3@ncedu.ru", Encrypt.getHash("User3"), 0L, "User3", "User3", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis())));
     }
 
+    /**
+     * Anonymous user
+     */
+    private static final User GUEST = new User(0L, null, null, LocalGroupDAO.GUESTS.getGroupId(), "Guest", "Guest", null, null);
+    
     @Override
     public int insert(User entity) {
         if (entity == null) {
@@ -109,6 +115,18 @@ public class LocalUserDAO implements UserDAO {
     @Override
     public List<User> findAll() {
         return localStorage;
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        for (User user : localStorage) {
+            System.out.println(user.getEmail());
+            if (user.getEmail().equals(email)) {
+                return user;
+            }
+        }
+
+        return null;
     }
 
 }
