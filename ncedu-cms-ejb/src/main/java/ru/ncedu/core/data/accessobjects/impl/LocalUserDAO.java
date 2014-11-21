@@ -120,7 +120,6 @@ public class LocalUserDAO implements UserDAO {
     @Override
     public User findByEmail(String email) {
         for (User user : localStorage) {
-            System.out.println(user.getEmail());
             if (user.getEmail().equals(email)) {
                 return user;
             }
