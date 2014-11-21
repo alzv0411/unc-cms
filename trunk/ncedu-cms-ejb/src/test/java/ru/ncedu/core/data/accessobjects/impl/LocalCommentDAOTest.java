@@ -28,25 +28,25 @@ public class LocalCommentDAOTest {
     /**
      * Test of insert method, of class LocalCommentDAO.
      */
-//    @Test
-//    public void testInsert() {
-//        CommentDAO instance = new LocalCommentDAO();
-//        
-//        Comment entity = null;
-//        int expResult = 0;
-//        int result = instance.insert(entity);
-//        assertEquals(expResult, result);
-//        
-//        entity = new Comment(1L, 1L, null, 1L, null, 1L, null);
-//        expResult = -1;
-//        result = instance.insert(entity);
-//        assertEquals(expResult, result);
-//        
-//        entity.setCommentId(101L);
-//        expResult = 1;
-//        result = instance.insert(entity);
-//        assertEquals(expResult, result);
-//    }
+    @Test
+    public void testInsert() {
+        CommentDAO instance = new LocalCommentDAO();
+        
+        Comment entity = null;
+        int expResult = 0;
+        int result = instance.insert(entity);
+        assertEquals(expResult, result);
+        
+        entity = new Comment(1L, 1L, null, 1L, null, 1L, null);
+        expResult = -1;
+        result = instance.insert(entity);
+        assertEquals(expResult, result);
+        
+        entity.setCommentId(101L);
+        expResult = 1;
+        result = instance.insert(entity);
+        assertEquals(expResult, result);
+    }
 
     /**
      * Test of update method, of class LocalCommentDAO.
@@ -78,7 +78,7 @@ public class LocalCommentDAOTest {
         entity = new Comment(-1L, 1L, null, 1L, null, 1L, null);
         assertFalse(instance.delete(entity));
         
-        entity = new Comment(1L, 1L, null, 1L, null, 1L, null);
+        entity = new Comment(2L, 1L, null, 1L, null, 1L, null);
         assertTrue(instance.delete(entity));
     }
 
@@ -93,7 +93,7 @@ public class LocalCommentDAOTest {
         Comment result = instance.findById(id);
         assertNull(result);
         
-        id = 2L;
+        id = 3L;
         result = instance.findById(id);
         assertNotNull(result);
     }
