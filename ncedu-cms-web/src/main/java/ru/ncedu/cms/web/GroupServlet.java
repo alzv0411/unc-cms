@@ -40,7 +40,7 @@ public class GroupServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       GroupDAO groupDAO = DAOFactory.getDAOFactory(DAOFactory.DAOType.LOCAL).getGroupDAO();
+        GroupDAO groupDAO = DAOFactory.getDAOFactory(DAOFactory.DAOType.LOCAL).getGroupDAO();
 
         String groupId = request.getParameter("id");
         if (StringUtils.isNotEmpty(groupId)) {
@@ -57,7 +57,7 @@ public class GroupServlet extends HttpServlet {
         List<Group> groups = groupDAO.findAll();
         request.setAttribute("groups", groups);
         request.getRequestDispatcher("groups.jsp").forward(request, response);
-        }
+    }
     
 
 
