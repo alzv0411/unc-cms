@@ -18,15 +18,16 @@ package ru.ncedu.core.data.factories.impl;
 import ru.ncedu.core.data.accessobjects.AttachmentDAO;
 import ru.ncedu.core.data.accessobjects.CommentDAO;
 import ru.ncedu.core.data.accessobjects.GroupDAO;
-
 import ru.ncedu.core.data.accessobjects.SettingDAO;
 import ru.ncedu.core.data.accessobjects.UserDAO;
+import ru.ncedu.core.data.accessobjects.RightDAO;
 
 import ru.ncedu.core.data.accessobjects.impl.LocalAttachmentDAO;
 import ru.ncedu.core.data.accessobjects.impl.LocalCommentDAO;
 import ru.ncedu.core.data.accessobjects.impl.LocalGroupDAO;
 import ru.ncedu.core.data.accessobjects.impl.LocalSettingDAO;
 import ru.ncedu.core.data.accessobjects.impl.LocalUserDAO;
+import ru.ncedu.core.data.accessobjects.impl.LocalRightDAO;
 
 import ru.ncedu.core.data.factories.DAOFactory;
 
@@ -62,6 +63,11 @@ public class LocalDAOFactory extends DAOFactory {
     @Override
     public CommentDAO getCommentDAO() {
         return new LocalCommentDAO();
+    }
+    
+    @Override
+    public RightDAO getRightDAO() {
+        return new LocalRightDAO();
     }
     
     @Override

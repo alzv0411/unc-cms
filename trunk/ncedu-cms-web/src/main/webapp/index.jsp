@@ -19,6 +19,7 @@
         <p><a href="/ncedu-cms-web/group">Groups</a><p>
         <p><a href="/ncedu-cms-web/comment">Comments</a><p> 
         <p><a href="/ncedu-cms-web/attachment">Attachments</a><p>
+        <p><a href="/ncedu-cms-web/right">Right</a><p>
         <p><a href="/ncedu-cms-web/login">Login</a><p>    
   
     </body>
