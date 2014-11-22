@@ -17,13 +17,12 @@ package ru.ncedu.core.data.factories.impl;
 
 
 import ru.ncedu.core.data.accessobjects.AttachmentDAO;
-
 import ru.ncedu.core.data.accessobjects.CommentDAO;
-
 import ru.ncedu.core.data.accessobjects.GroupDAO;
 import ru.ncedu.core.data.accessobjects.PageDAO;
 import ru.ncedu.core.data.accessobjects.UserDAO;
 import ru.ncedu.core.data.accessobjects.SettingDAO;
+import ru.ncedu.core.data.accessobjects.RightDAO;
 import ru.ncedu.core.data.factories.DAOFactory;
 
 /**
@@ -59,6 +58,11 @@ public class OracleDAOFactory extends DAOFactory {
 
     @Override
     public CommentDAO getCommentDAO() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    @Override
+    public RightDAO getRightDAO() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
