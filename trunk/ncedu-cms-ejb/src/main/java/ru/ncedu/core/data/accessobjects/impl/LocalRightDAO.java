@@ -66,8 +66,10 @@ public class LocalRightDAO implements RightDAO{
             return 0;
         }
 
-        Right groupRight = findById(entity.getGroupId());
-        Right pageRight = findById(entity.getPageId());
+        //Right groupRight = findById(entity.getGroupId());
+        //Right pageRight = findById(entity.getPageId());
+        Right groupRight = findByGroup(entity.getGroupId());
+        Right pageRight = findByPage(entity.getPageId());
 
         if ((groupRight != null) && (pageRight != null)) {
             return -1;
@@ -92,8 +94,10 @@ public class LocalRightDAO implements RightDAO{
             return false;
         }
 
-        Right groupRight = findById(entity.getGroupId());
-        Right pageRight = findById(entity.getPageId());
+        //Right groupRight = findById(entity.getGroupId());
+        //Right pageRight = findById(entity.getPageId());
+        Right groupRight = findByGroup(entity.getGroupId());
+        Right pageRight = findByPage(entity.getPageId());
 
         if ((groupRight == null) || (pageRight == null)) {
             return false;
@@ -121,7 +125,7 @@ public class LocalRightDAO implements RightDAO{
         }
         
         return false;
-    }
+    }            
     
     @Override
     public Right findById(long id) {
@@ -130,9 +134,28 @@ public class LocalRightDAO implements RightDAO{
                 return groupRight;
             }
         }
-
         return null;
     }
+    
+    @Override
+    public Right findByGroup(long id) {
+        for (Right groupRight : localStorage) {
+            if (groupRight.getGroupId() == id) {
+                return groupRight;
+            }
+        }
+        return null;
+    }
+    
+    @Override
+    public Right findByPage(long id) {
+        for (Right pageRight : localStorage) {
+            if (pageRight.getPageId() == id) {
+                return pageRight;
+            }
+        }
+        return null;
+    }    
     
     @Override
     public Right findByGroupIdPageId(long groupId, long pageId) {        

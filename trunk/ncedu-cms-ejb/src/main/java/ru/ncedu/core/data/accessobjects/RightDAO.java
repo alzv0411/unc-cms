@@ -22,5 +22,7 @@ import ru.ncedu.core.data.entities.Right;
  * @author dmitry
  */
 public interface RightDAO extends CRUD<Right>{
+    Right findByGroup(long id);
+    Right findByPage(long id);
     Right findByGroupIdPageId(long groupId, long pageId);
 }
