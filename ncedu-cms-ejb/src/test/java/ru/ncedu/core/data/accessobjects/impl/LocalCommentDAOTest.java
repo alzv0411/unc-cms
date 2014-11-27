@@ -18,7 +18,7 @@ import ru.ncedu.core.data.entities.Comment;
 
 /**
  *
- * @author Roman
+ * @author Roman Semenov <romansemenov3@gmail.com>
  */
 public class LocalCommentDAOTest {
     

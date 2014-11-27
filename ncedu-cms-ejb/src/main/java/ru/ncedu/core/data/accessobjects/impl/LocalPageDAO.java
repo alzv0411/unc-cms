@@ -31,11 +31,11 @@ public class LocalPageDAO implements PageDAO {
 
     private static final List<Page> localStorage = Collections.synchronizedList(new ArrayList<Page>());
     static {
-        localStorage.add(new Page(1L, 5L, "Title 1", "123", 0L, new Date(System.currentTimeMillis()), 0L, new Date(System.currentTimeMillis()), "Some properties"));
-        localStorage.add(new Page(2L, 4L, "Title 2", "456", 0L, new Date(System.currentTimeMillis()), 0L, new Date(System.currentTimeMillis()), "More properties"));
-        localStorage.add(new Page(3L, 3L, "Title 3", "789", 0L, new Date(System.currentTimeMillis()), 0L, new Date(System.currentTimeMillis()), "And more..."));
-        localStorage.add(new Page(4L, 2L, "Title 4", "098", 0L, new Date(System.currentTimeMillis()), 0L, new Date(System.currentTimeMillis()), "And more..."));
-        localStorage.add(new Page(5L, 1L, "Title 5", "342", 0L, new Date(System.currentTimeMillis()), 0L, new Date(System.currentTimeMillis()), "Yeah, you guessed it, more properties"));
+        localStorage.add(new Page(1L, 1L, "Public", "Public page", 0L, new Date(System.currentTimeMillis()), 0L, new Date(System.currentTimeMillis()), "Some properties"));
+        localStorage.add(new Page(2L, 2L, "Others", "Others page", 0L, new Date(System.currentTimeMillis()), 0L, new Date(System.currentTimeMillis()), "More properties"));
+        localStorage.add(new Page(3L, 3L, "Moders", "Moders page", 0L, new Date(System.currentTimeMillis()), 0L, new Date(System.currentTimeMillis()), "And more..."));
+        localStorage.add(new Page(4L, 4L, "Admins", "Admins page", 0L, new Date(System.currentTimeMillis()), 0L, new Date(System.currentTimeMillis()), "And more..."));
+        localStorage.add(new Page(5L, 5L, "Default", "Default page", 0L, new Date(System.currentTimeMillis()), 0L, new Date(System.currentTimeMillis()), "And more..."));
     }
 
     @Override

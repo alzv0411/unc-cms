@@ -46,7 +46,7 @@ public class LocalCommentDAO implements CommentDAO {
     /**
      * Inserts value in database
      * @param entity - value to insert
-     * @return -1 if value already exists</br>0 if value is nuul</br>1 if valeu inserted
+     * @return -1 if value already exists</br>0 if value is null</br>1 if value inserted
      */
     @Override
     public int insert(Comment entity) {
@@ -68,7 +68,7 @@ public class LocalCommentDAO implements CommentDAO {
     /**
      * Updates value in database
      * @param entity - value to update
-     * @return false if value is null or not exists
+     * @return false if value is null or not exist
      */
     @Override
     public boolean update(Comment entity) {
@@ -96,7 +96,7 @@ public class LocalCommentDAO implements CommentDAO {
     /**
      * Deletes value from database
      * @param entity - value to detele
-     * @return false if value is null or not exists
+     * @return false if value is null or not exist
      */
     @Override
     public boolean delete(Comment entity) {

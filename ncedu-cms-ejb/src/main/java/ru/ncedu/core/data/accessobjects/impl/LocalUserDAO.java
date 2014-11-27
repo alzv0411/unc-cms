@@ -32,11 +32,11 @@ public class LocalUserDAO implements UserDAO {
 
     private static final List<User> localStorage = Collections.synchronizedList(new ArrayList<User>());
     static {
-        localStorage.add(new User(1L, "admin@ncedu.ru", Encrypt.getHash("Admin"), 1L, "Admin", "Admin", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis())));
-        localStorage.add(new User(2L, "moder@ncedu.ru", Encrypt.getHash("Moder"), 2L, "Moder", "Moder", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis())));
-        localStorage.add(new User(3L, "user1@ncedu.ru", Encrypt.getHash("User1"), 3L, "User1", "User1", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis())));
-        localStorage.add(new User(4L, "user2@ncedu.ru", Encrypt.getHash("User2"), 3L, "User2", "User2", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis())));
-        localStorage.add(new User(5L, "user3@ncedu.ru", Encrypt.getHash("User3"), 3L, "User3", "User3", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis())));
+        localStorage.add(new User(1L, "admin@ncedu.ru", "4e7afebcfbae000b22c7c85e5560f89a2a0280b4", LocalGroupDAO.ADMINS.getGroupId(), "Admin", "Admin", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis())));
+        localStorage.add(new User(2L, "moder@ncedu.ru", "4d7c2910be6901811235f18772d1e1f680fb966d", 2L, "Moder", "Moder", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis())));
+        localStorage.add(new User(3L, "user1@ncedu.ru", "4146594c9c6ac5407a3123560401170c2756a342", 3L, "User1", "User1", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis())));
+        localStorage.add(new User(4L, "user2@ncedu.ru", "5d731241e892a0e3b7a9c701d65d176830b709cc", 3L, "User2", "User2", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis())));
+        localStorage.add(new User(5L, "user3@ncedu.ru", "325ef576f8066a46818c91ef3bbd0db7b2c40b66", 3L, "User3", "User3", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis())));
     }
 
     /**

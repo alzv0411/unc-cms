@@ -83,7 +83,7 @@ public class LocalGroupDAOTest {
     public void testFindById() {
         GroupDAO instance = new LocalGroupDAO();
         
-        long id = 0L;
+        long id = -1L;
         Group result = instance.findById(id);
         assertNull(result);
         

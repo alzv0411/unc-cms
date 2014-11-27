@@ -49,6 +49,14 @@
                 <td>Properties:</td>
                 <td>${page.properties}</td>
             </tr>
+            <tr>
+                <td>Read:</td>
+                <td>${right.read}</td>
+            </tr>
+            <tr>
+                <td>Write:</td>
+                <td>${right.write}</td>
+            </tr>
         </table>
     </body>
 </html>

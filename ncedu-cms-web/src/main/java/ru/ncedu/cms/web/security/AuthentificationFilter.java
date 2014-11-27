@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ru.ncedu.cms.web;
+package ru.ncedu.cms.web.security;
 
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -16,17 +19,18 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import ru.ncedu.core.data.accessobjects.impl.LocalUserDAO;
-import ru.ncedu.core.data.entities.User;
+import ru.ncedu.core.security.SecurityException;
+import ru.ncedu.core.security.AuthentificationBean;
 
 /**
- * The class <code>LoginFilter</code> represents authentification preprocessing
+ * The class <code>AuthentificationFilter</code> represents authentification preprocessing
  * @author Roman Semenov <romansemenov3@gmail.com>
  */
 @WebFilter(filterName = "LoginFilter", urlPatterns = {"/*"})
-public class LoginFilter implements Filter {
+public class AuthentificationFilter implements Filter {
+    
+    @EJB
+    private AuthentificationBean security;
     
     private static final boolean debug = true;
 
@@ -35,7 +39,7 @@ public class LoginFilter implements Filter {
     // configured. 
     private FilterConfig filterConfig = null;
     
-    public LoginFilter() {
+    public AuthentificationFilter() {
     }    
 
     /**
@@ -50,17 +54,11 @@ public class LoginFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-        
-        if(request instanceof HttpServletRequest)
-        {            
-            HttpSession session = ((HttpServletRequest)request).getSession(true);
-            
-            User user = (User) session.getAttribute("user");
-            
-            if(user == null) //User is Guest if not authentificated
-            {
-                session.setAttribute("user", LocalUserDAO.GUEST);
-            }
+          
+        try {
+            security.cheackAuthentification();
+        } catch (SecurityException ex) {
+            Logger.getLogger(AuthentificationFilter.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         chain.doFilter(request, response);

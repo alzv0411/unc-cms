@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,7 +21,7 @@
                         Email:
                     </td>
                     <td style="text-align: left">
-                        <input type="text" name="login">
+                        <input type="text" name="email">
                     </td>
                 </tr>
                 <tr>
@@ -36,11 +37,13 @@
                         <center><input type="submit" name="Login" value="Login"></center>
                     </td>
                 </tr>
+                <c:if test="${loginStatusText != null}">
                 <tr>
                     <td colspan="2" style="text-align: center">
                         ${loginStatusText}
                     </td>
                 </tr>
+                </c:if>
                 <tr>
                     <td colspan="2" style="text-align: center">
                         Current groupId: ${currentGroup}
@@ -49,7 +52,7 @@
             </table>
         </form>
         <hr>
-        <form method="post" action="login?action=logout">
+        <form method="post" action="logout">
             <input type="submit" name="Logout" value="Logout">
         </form>
     </body>
