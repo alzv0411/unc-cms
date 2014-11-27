@@ -1,0 +1,25 @@
+#summary Rights API representation.
+#labels Phase-Requirements,Phase-Implementation
+
+= Introduction =
+
+Rights API позволяет удобно управлять доступом к данным, избавляя пользователя API от работы с сессиями и таблицами прав.
+
+= Details =
+
+Чтобы получить доступ к Rights API необходимо добавить в servlet:
+<code>
+@EJB
+RightBean rightBean; //Имя переменной на ваше усмотрение</code>
+
+Почему так?<br/>
+Аннотация @EJB позволяет использовать некоторые данные servlet без явной передачи классу (в данном случае классу RightBean). RightBean тоже имеет специальные аннотации @Stateless и @LocalBean, позволяющие применить к нему @EJB снаружи и @Inject внутри (эта аннотация подставляет необходимые данные в RightBean).
+
+Rights API поддерживает следующие функции:
+ * Right getRight(long pageId) - позволяет получить полную запись о правах
+ * long canRead(long pageId) - позволяет получить уровень доступа для чтения
+ * long canRead(long pageId) - позволяет получить уровень доступа для записи
+
+Значения read и write:
+ * 1 - разрешено
+ * 0 - запрещено
