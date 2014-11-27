@@ -23,10 +23,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import ru.ncedu.HelloBean;
 import ru.ncedu.core.data.accessobjects.PageDAO;
 import ru.ncedu.core.data.entities.Page;
 import ru.ncedu.core.data.factories.DAOFactory;
+import ru.ncedu.core.security.RightBean;
 import ru.ncedu.core.utils.StringUtils;
 
 /**
@@ -37,7 +37,8 @@ import ru.ncedu.core.utils.StringUtils;
 public class PageServlet extends HttpServlet {
 
     @EJB
-    HelloBean helloBean;
+    RightBean rightBean;
+    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -60,7 +61,8 @@ public class PageServlet extends HttpServlet {
                 request.getRequestDispatcher("error.jsp").forward(request, response);
             }
             
-            request.setAttribute("Page", page);
+            request.setAttribute("page", page);
+            request.setAttribute("right", rightBean.getRight(Long.valueOf(pageId)));
             request.getRequestDispatcher("page.jsp").forward(request, response);
         }
 

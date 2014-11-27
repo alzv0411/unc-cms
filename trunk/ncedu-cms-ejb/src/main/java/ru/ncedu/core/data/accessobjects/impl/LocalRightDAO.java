@@ -19,7 +19,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import ru.ncedu.core.data.accessobjects.GroupDAO;
 import ru.ncedu.core.data.accessobjects.RightDAO;
+import ru.ncedu.core.data.entities.Group;
 import ru.ncedu.core.data.entities.Right;
 
 /**
@@ -30,12 +32,33 @@ public class LocalRightDAO implements RightDAO{
     
     private static final List<Right> localStorage = Collections.synchronizedList(new ArrayList<Right>());
     static {
-        localStorage.add(new Right(1,1,0,0));
-        localStorage.add(new Right(2,2,0,1));
-        localStorage.add(new Right(3,3,1,0));
-        localStorage.add(new Right(4,4,1,1));
-        localStorage.add(new Right(5,5,0,0));
+        //"Public page"
+        localStorage.add(new Right(0,1,1,0)); //GUESTS: Read
+        localStorage.add(new Right(1,1,1,1)); //ADMINS: Read, Write
+        localStorage.add(new Right(2,1,1,1)); //"Moders": Read, Write
+        localStorage.add(new Right(3,1,1,0)); //"Others": Read
+        
+        //"Others page"
+        localStorage.add(new Right(0,2,0,0)); //GUESTS:
+        localStorage.add(new Right(1,2,1,1)); //ADMINS: Read, Write
+        localStorage.add(new Right(2,2,1,1)); //"Moders": Read, Write
+        localStorage.add(new Right(3,2,1,0)); //"Others": Read
+        
+        //"Moders page"
+        localStorage.add(new Right(0,3,0,0)); //GUESTS:
+        localStorage.add(new Right(1,3,1,1)); //ADMINS: Read, Write
+        localStorage.add(new Right(2,3,1,0)); //"Moders": Read
+        
+        //"Admins page"
+        localStorage.add(new Right(0,4,0,0)); //GUESTS:
+        localStorage.add(new Right(1,4,1,1)); //ADMINS: Read, Write
+        
+        //"Default page"
+        //No data
     }
+    
+    public static final Right ADMIN_RIGHT = new Right(0, 0, 1, 1); //Read + Write
+    public static final Right DEFAULT_RIGHT = new Right(0, 0, 1, 0); //Read
     
     @Override
     public int insert(Right entity) {
@@ -109,6 +132,30 @@ public class LocalRightDAO implements RightDAO{
         }
 
         return null;
+    }
+    
+    @Override
+    public Right findByGroupIdPageId(long groupId, long pageId) {        
+        for (Right groupRight : localStorage) {
+            if (groupRight.getGroupId() == groupId && groupRight.getPageId() == pageId) {
+                return groupRight;
+            }
+        }
+        
+        GroupDAO groupDAO = new LocalGroupDAO();
+        Group group = groupDAO.findById(groupId);
+        if(group.getParentId() == groupId) //If group is independent
+        {
+            if(groupId == LocalGroupDAO.ADMINS.getGroupId())
+            {
+                return ADMIN_RIGHT;
+            }
+            return DEFAULT_RIGHT;
+        }
+        else
+        {
+            return findByGroupIdPageId(group.getParentId(), pageId);
+        }
     }
     
     @Override
