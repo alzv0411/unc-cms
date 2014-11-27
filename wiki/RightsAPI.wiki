@@ -23,3 +23,17 @@ Rights API поддерживает следующие функции:
 Значения read и write:
  * 1 - разрешено
  * 0 - запрещено
+
+Пример использования:
+<code>
+...Код сервлета...
+
+@EJB
+RightBean rightBean;
+
+...Код сервлета...
+
+    long readable = rightBean.canRead(pageId);
+
+...Код сервлета...
+</code>
