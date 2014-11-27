@@ -52,17 +52,17 @@ public class RightServlet extends HttpServlet {
             throws ServletException, IOException {
         RightDAO rightDAO = DAOFactory.getDAOFactory(DAOFactory.DAOType.LOCAL).getRightDAO();
 
-        String groupId = request.getParameter("id");
+        String groupId = request.getParameter("groupId");
         if (StringUtils.isNotEmpty(groupId)) {
-            Right right = rightDAO.findById(Long.valueOf(groupId));
+            Right right = rightDAO.findByGroup(Long.valueOf(groupId));
             if (right == null) {
-                request.setAttribute("message", "Right with id=" + groupId + " doesn't exist");
+                request.setAttribute("message", "Right with groupId=" + groupId + " doesn't exist");
                 request.getRequestDispatcher("error.jsp").forward(request, response);
             }
             
             request.setAttribute("right", right);
             request.getRequestDispatcher("right.jsp").forward(request, response);
-        }
+        }                
 
         List<Right> rights = rightDAO.findAll();
         request.setAttribute("rights", rights);
