@@ -44,6 +44,6 @@ public class RightBean extends SecurityBean {
      */
     public long canWrite(long pageId)
     {
-        return getRight(pageId).getRead();
+        return getRight(pageId).getWrite();
     }
 }
