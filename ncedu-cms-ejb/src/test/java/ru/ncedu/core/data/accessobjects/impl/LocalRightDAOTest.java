@@ -18,6 +18,7 @@ package ru.ncedu.core.data.accessobjects.impl;
 import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 import ru.ncedu.core.data.entities.Right;
 
 /**
@@ -33,6 +34,7 @@ public class LocalRightDAOTest {
      * Test of insert method, of class LocalRightDAO.
      */
     @Test
+    @Ignore
     public void testInsert() {
         System.out.println("insert");
         Right entity = null;
@@ -48,6 +50,7 @@ public class LocalRightDAOTest {
      * Test of update method, of class LocalRightDAO.
      */
     @Test
+    @Ignore
     public void testUpdate() {
         System.out.println("update");
         Right entity = null;
@@ -63,6 +66,7 @@ public class LocalRightDAOTest {
      * Test of delete method, of class LocalRightDAO.
      */
     @Test
+    @Ignore
     public void testDelete() {
         System.out.println("delete");
         Right entity = null;
@@ -78,6 +82,7 @@ public class LocalRightDAOTest {
      * Test of findById method, of class LocalRightDAO.
      */
     @Test
+    @Ignore
     public void testFindById() {
         System.out.println("findById");
         long id = 0L;
@@ -93,6 +98,7 @@ public class LocalRightDAOTest {
      * Test of findByGroup method, of class LocalRightDAO.
      */
     @Test
+    @Ignore
     public void testFindByGroup() {
         System.out.println("findByGroup");
         long id = 0L;
@@ -108,6 +114,7 @@ public class LocalRightDAOTest {
      * Test of findByPage method, of class LocalRightDAO.
      */
     @Test
+    @Ignore
     public void testFindByPage() {
         System.out.println("findByPage");
         long id = 0L;
@@ -123,6 +130,7 @@ public class LocalRightDAOTest {
      * Test of findByGroupIdPageId method, of class LocalRightDAO.
      */
     @Test
+    @Ignore
     public void testFindByGroupIdPageId() {
         System.out.println("findByGroupIdPageId");
         long groupId = 0L;
@@ -139,6 +147,7 @@ public class LocalRightDAOTest {
      * Test of findAll method, of class LocalRightDAO.
      */
     @Test
+    @Ignore
     public void testFindAll() {
         System.out.println("findAll");
         LocalRightDAO instance = new LocalRightDAO();
