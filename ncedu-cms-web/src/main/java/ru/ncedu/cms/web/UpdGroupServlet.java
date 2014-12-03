@@ -42,27 +42,42 @@ public class UpdGroupServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         GroupDAO groupDAO = DAOFactory.getDAOFactory(DAOFactory.DAOType.LOCAL).getGroupDAO();
-
+       
+        String id = request.getParameter("id");
         String groupId = request.getParameter("groupId");
         String parentId = request.getParameter("parentId");
         String name = request.getParameter("name");
-        if (StringUtils.isNotEmpty(groupId)) {
+        
+        
+            if (groupId == null ) {
+            List<Group> groups = groupDAO.findAll();    
+            Group group = groupDAO.findById(Long.valueOf(id));
             
+           
+            request.setAttribute("groups", groups);
             
-            Group group = groupDAO.findById(Long.valueOf(groupId));
-            if (group == null) {
-                request.setAttribute("message", "group with id=" + groupId + " doesn't exist");
-                request.getRequestDispatcher("error.jsp").forward(request, response);
+           
+            request.setAttribute("groupId", group.getGroupId());           
+            request.setAttribute("parentNum", group.getParentId());
+            request.setAttribute("name", group.getName());
+            
+            request.getRequestDispatcher("updGroup.jsp").forward(request, response);
+            
             }
-            group.setGroupId(Long.valueOf(groupId));
-            group.setParentId(Long.valueOf(parentId));
-            group.setName(name);
-            groupDAO.update(group);
-        }
+            else {
+            Group group = groupDAO.findById(Long.valueOf(groupId));
+           
+             group.setParentId(Long.valueOf(parentId));
+             group.setName(name);
+             groupDAO.update(group); 
+           
+            List<Group> groups = groupDAO.findAll();
+            request.setAttribute("groups", groups);
+            request.getRequestDispatcher("groups.jsp").forward(request, response);
+            }
+        
 
-        List<Group> groups = groupDAO.findAll();
-        request.setAttribute("groups", groups);
-        request.getRequestDispatcher("groups.jsp").forward(request, response);
+        
         
         
     }
