@@ -42,7 +42,7 @@ public class DelGroupServlet extends HttpServlet {
             throws ServletException, IOException {
         GroupDAO groupDAO = DAOFactory.getDAOFactory(DAOFactory.DAOType.LOCAL).getGroupDAO();
 
-        String groupId = request.getParameter("groupId");
+        String groupId = request.getParameter("id");
         if (StringUtils.isNotEmpty(groupId)) {
             Group group = groupDAO.findById(Long.valueOf(groupId));
             if (group == null) {

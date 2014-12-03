@@ -47,6 +47,7 @@ public class InsGroupServlet extends HttpServlet {
         String parentId = request.getParameter("parentId");
         String name = request.getParameter("name");
         
+       
         if (StringUtils.isNotEmpty(groupId)) {
             Group group = groupDAO.findById(Long.valueOf(groupId));
             if (group == null) {
@@ -55,18 +56,25 @@ public class InsGroupServlet extends HttpServlet {
                 newGroup.setParentId(Long.valueOf(parentId));
                 newGroup.setName(name);
                 groupDAO.insert(newGroup);
+                
+                List<Group> groups = groupDAO.findAll();
+                request.setAttribute("groups", groups);
+                request.getRequestDispatcher("groups.jsp").forward(request, response);
             }
             else {
             request.setAttribute("message", "group with id=" + groupId + " exist");
             request.getRequestDispatcher("error.jsp").forward(request, response);
             }
         }
-
-        List<Group> groups = groupDAO.findAll();
-        request.setAttribute("groups", groups);
-        request.getRequestDispatcher("groups.jsp").forward(request, response);
+        else
+         {
+          List<Group> groups = groupDAO.findAll();
+          request.setAttribute("groups", groups);
+          request.getRequestDispatcher("insGroup.jsp").forward(request, response);   
+        }
         
         
+           
     }
     
 
