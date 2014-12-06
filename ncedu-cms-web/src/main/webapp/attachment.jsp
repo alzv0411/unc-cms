@@ -3,7 +3,6 @@
     Created on : Nov 18, 2014, 7:11:26 PM
     Author     : Viktor
 --%>
-
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
