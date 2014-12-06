@@ -76,9 +76,10 @@ public class LocalRightDAO implements RightDAO{
         }       
         
         for (Iterator<Right> it = localStorage.iterator(); it.hasNext();) {
-            Right iterationGroupRight = it.next();
-            Right iterationPageRight = it.next();
-            if ((iterationGroupRight.getGroupId() == entity.getGroupId()) && (iterationPageRight.getPageId() == entity.getPageId())) {
+            //Right iterationGroupRight = it.next();
+            //Right iterationPageRight = it.next();
+            Right right = it.next();
+            if ((right.getGroupId() == entity.getGroupId()) && (right.getPageId() == entity.getPageId())) {
                 return 0;
             }
         }
@@ -116,9 +117,10 @@ public class LocalRightDAO implements RightDAO{
         }
         
         for (Iterator<Right> it = localStorage.iterator(); it.hasNext();) {
-            Right groupRight = it.next();
-            Right pageRight = it.next();
-            if ((groupRight.getGroupId() == entity.getGroupId()) && (pageRight.getPageId() == entity.getPageId())) {
+            //Right groupRight = it.next();
+            //Right pageRight = it.next();
+            Right right = it.next();
+            if ((right.getGroupId() == entity.getGroupId()) && (right.getPageId() == entity.getPageId())) {
                 it.remove();
                 return true;
             }
