@@ -15,14 +15,19 @@
  */
 package ru.ncedu.core.data.accessobjects;
 
+import java.util.List;
 import ru.ncedu.core.data.entities.Right;
 
 /**
  *
  * @author dmitry
  */
-public interface RightDAO extends CRUD<Right>{
+public interface RightDAO {
+    int insert(Right entity);
+    boolean update(Right entity);
+    boolean delete(Right entity);
     Right findByGroup(long id);
     Right findByPage(long id);
     Right findByGroupIdPageId(long groupId, long pageId);
+    List<Right> findAll();
 }

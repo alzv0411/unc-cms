@@ -20,7 +20,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import ru.ncedu.core.data.accessobjects.RightDAO;
 import ru.ncedu.core.data.entities.Right;
-import org.junit.Ignore;
 
 /**
  *
@@ -90,22 +89,6 @@ public class LocalRightDAOTest {
     }
 
     /**
-     * Test of findById method, of class LocalRightDAO.
-     */
-    @Test
-    @Ignore
-    public void testFindById() {
-        System.out.println("findById");
-        long id = 0L;
-        LocalRightDAO instance = new LocalRightDAO();
-        Right expResult = null;
-        Right result = instance.findById(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of findByGroup method, of class LocalRightDAO.
      */
     @Test
@@ -141,14 +124,16 @@ public class LocalRightDAOTest {
      * Test of findByGroupIdPageId method, of class LocalRightDAO.
      */
     @Test
-    @Ignore
+//    @Ignore
     public void testFindByGroupIdPageId() {
         RightDAO instance = new LocalRightDAO();
-        
-        long groupId = 10L;
-        long pageId = 0L;
+                
+        long groupId = 0L;
+        long pageId = 101L;        
+                
         Right result = instance.findByGroupIdPageId(groupId, pageId);
-        assertNull(result);
+        Right expResult = instance.findByGroupIdPageId(0, 0);
+        assertEquals(expResult, result);
         
         groupId = 1L;
         pageId = 1L;

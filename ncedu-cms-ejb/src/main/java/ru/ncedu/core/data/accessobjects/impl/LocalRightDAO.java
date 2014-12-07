@@ -66,8 +66,6 @@ public class LocalRightDAO implements RightDAO{
             return 0;
         }
 
-        //Right groupRight = findById(entity.getGroupId());
-        //Right pageRight = findById(entity.getPageId());
         Right groupRight = findByGroup(entity.getGroupId());
         Right pageRight = findByPage(entity.getPageId());
 
@@ -76,8 +74,6 @@ public class LocalRightDAO implements RightDAO{
         }       
         
         for (Iterator<Right> it = localStorage.iterator(); it.hasNext();) {
-            //Right iterationGroupRight = it.next();
-            //Right iterationPageRight = it.next();
             Right right = it.next();
             if ((right.getGroupId() == entity.getGroupId()) && (right.getPageId() == entity.getPageId())) {
                 return 0;
@@ -95,8 +91,6 @@ public class LocalRightDAO implements RightDAO{
             return false;
         }
 
-        //Right groupRight = findById(entity.getGroupId());
-        //Right pageRight = findById(entity.getPageId());
         Right groupRight = findByGroup(entity.getGroupId());
         Right pageRight = findByPage(entity.getPageId());
 
@@ -117,8 +111,6 @@ public class LocalRightDAO implements RightDAO{
         }
         
         for (Iterator<Right> it = localStorage.iterator(); it.hasNext();) {
-            //Right groupRight = it.next();
-            //Right pageRight = it.next();
             Right right = it.next();
             if ((right.getGroupId() == entity.getGroupId()) && (right.getPageId() == entity.getPageId())) {
                 it.remove();
@@ -128,17 +120,7 @@ public class LocalRightDAO implements RightDAO{
         
         return false;
     }            
-    
-    @Override
-    public Right findById(long id) {
-        for (Right groupRight : localStorage) {
-            if (groupRight.getGroupId() == id) {
-                return groupRight;
-            }
-        }
-        return null;
-    }
-    
+
     @Override
     public Right findByGroup(long id) {
         for (Right groupRight : localStorage) {
