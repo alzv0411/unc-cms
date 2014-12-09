@@ -22,6 +22,8 @@
                 <td>CreatedWhen</td>
                 <td>ModifiedBy</td>
                 <td>ModifiedWhen</td>
+                <td>DELETE</td>
+                <td>UPDATE</td>
             </tr>
             <c:forEach items="${comments}" var="comment">
                 <tr>
@@ -32,8 +34,14 @@
                     <td><fmt:formatDate value="${comment.createdWhen}" pattern="yyyy-MM-dd"/></td>
                     <td>${comment.modifiedBy}</td>
                     <td><fmt:formatDate value="${comment.modifiedWhen}" pattern="yyyy-MM-dd"/></td>
+                    <td>  <a href="http://localhost:8080/ncedu-cms-web/delcomment?id=${comment.commentId}">del</a></td>
+                    <td>  <a href="http://localhost:8080/ncedu-cms-web/updcomment?id=${comment.commentId}">Upd</a></td>
                 </tr>
             </c:forEach>
     </table>
+        <hr> 
+        <form action="insComment.jsp" method="post" >
+            <p><input type="submit" value="Добавить"></p>      
+        </form>
 </body>
 </html>
