@@ -1,0 +1,97 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden;  
+  font-family: 'Roboto', sans-serif;
+}
+
+#header {
+  position: relative;
+  height: 70px;
+  background-color: #eee;
+  padding: 0;
+  box-shadow: 8px 0 0 0 #888888;
+  box-shadow: 0 0 8px rgba(0,0,0,.4);
+  z-index: 1;
+}
+
+#header_tools {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 0;
+}
+
+#pagename {
+  position: absolute;
+  height: 100%;
+  line-height: 70px;
+  font-size: 30px;
+  padding: 0px 20px;
+  font-weight: 900;
+  text-shadow: 1px, black;
+}
+
+#searchbox {
+  display: inline-block;
+}
+
+#userdata {
+  display: inline-block;
+  width: 150px;
+}
+
+#content_wrapper {
+  position: absolute;
+  width: 100%;
+  top: 70px;
+  bottom: 20px;
+  background-color: #fff;
+  padding: 0;
+}
+
+#navigation {  
+  height: 100%;
+  width: 200px;
+  position: relative;
+  float: left;
+  background-color: #f6f6f6;
+  box-shadow: 0 0 0 8px #888888;
+  box-shadow: 0 0 8px rgba(0,0,0,.4);
+  padding-top: 4px;
+  padding-left: 6px;
+}
+
+#container {
+  position: relative;
+  margin-left: 206px;
+  height: 100%;  
+}
+
+#breadcrumbs {
+  position: relative;
+  height: 35px;
+  line-height: 35px;
+  background-color: #eee;
+  padding-left: 6px;
+}
+
+#content{
+  position: absolute;
+  padding: 8px;
+  overflow-y: auto;
+  top: 35px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+#footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  height: 20px;
+  background-color: #ddd;
+  text-align: center;
+  line-height: 20px;
+}
