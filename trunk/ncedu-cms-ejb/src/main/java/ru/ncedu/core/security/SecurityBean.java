@@ -6,9 +6,6 @@
 package ru.ncedu.core.security;
 
 import java.io.Serializable;
-import java.util.Map;
-import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,8 +16,6 @@ import ru.ncedu.core.data.accessobjects.impl.LocalGroupDAO;
 import ru.ncedu.core.data.accessobjects.impl.LocalRightDAO;
 import ru.ncedu.core.data.accessobjects.impl.LocalUserDAO;
 import ru.ncedu.core.data.entities.User;
-import ru.ncedu.core.utils.Encrypt;
-import ru.ncedu.core.utils.StringUtils;
 import static ru.ncedu.core.security.SecurityConstants.*;
 
 /**
