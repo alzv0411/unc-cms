@@ -28,16 +28,36 @@ import ru.ncedu.core.data.entities.Page;
  * @author Alexander Zvyagintsev <alzv0411@gmail.com>
  */
 public class LocalPageDAO implements PageDAO {
-
+    
     private static final List<Page> localStorage = Collections.synchronizedList(new ArrayList<Page>());
     static {
-        localStorage.add(new Page(1L, 1L, "Public", "Public page", 0L, new Date(System.currentTimeMillis()), 0L, new Date(System.currentTimeMillis()), "Some properties"));
+        localStorage.add(new Page(1L, 1L, "Public", "Public page", 0L, new Date(System.currentTimeMillis()), 0L, new Date(System.currentTimeMillis()), "Some properties"));        
         localStorage.add(new Page(2L, 2L, "Others", "Others page", 0L, new Date(System.currentTimeMillis()), 0L, new Date(System.currentTimeMillis()), "More properties"));
         localStorage.add(new Page(3L, 3L, "Moders", "Moders page", 0L, new Date(System.currentTimeMillis()), 0L, new Date(System.currentTimeMillis()), "And more..."));
         localStorage.add(new Page(4L, 4L, "Admins", "Admins page", 0L, new Date(System.currentTimeMillis()), 0L, new Date(System.currentTimeMillis()), "And more..."));
         localStorage.add(new Page(5L, 5L, "Default", "Default page", 0L, new Date(System.currentTimeMillis()), 0L, new Date(System.currentTimeMillis()), "And more..."));
     }
+    
+    /**
+     * Imitates A_I in database
+     */
+    private static long AUTO_INCREMENT = localStorage.size() + 1;
 
+    /**
+     * Adds page and sets pageId number automatically
+     * @param entity - page to add
+     * @return page id number
+     */
+    @Override
+    public Page add(Page entity)
+    {
+        entity.setPageId(AUTO_INCREMENT);
+        localStorage.add(entity);
+        ++AUTO_INCREMENT;
+        
+        return entity;
+    }
+    
     @Override
     public int insert(Page entity) {
         if (entity == null) {

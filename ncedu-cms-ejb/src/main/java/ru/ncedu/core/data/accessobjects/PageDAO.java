@@ -23,6 +23,7 @@ import ru.ncedu.core.data.entities.Page;
  * @author Alexander Zvyagintsev <alzv0411@gmail.com>
  */
 public interface PageDAO {
+    Page add(Page entity);
     int insert(Page entity);
     boolean update(Page entity);
     boolean delete(Page  entity);
