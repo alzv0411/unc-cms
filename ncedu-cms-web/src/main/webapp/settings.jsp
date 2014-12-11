@@ -17,13 +17,21 @@
             <tr>
                 <td>Name</td>
                 <td>Value</td>
+                <td>Update</td>
+                <td>Delete</td>                
             </tr>
             <c:forEach items="${settings}" var="setting">
                 <tr>
                     <td>${setting.name}</td>
                     <td>${setting.value}</td>
+                    <td><a href="http://localhost:8080/ncedu-cms-web/updsetting?named=${setting.name}">Upd</a></td>
+                    <td><a href="http://localhost:8080/ncedu-cms-web/delsetting?name=${setting.name}">Del</a></td>
                 </tr>
             </c:forEach>
     </table>
+    <hr> 
+    <form action="inssetting" method="post" >
+        <p><input type="submit" value="Добавить"></p>
+    </form>
     </body>
 </html>
