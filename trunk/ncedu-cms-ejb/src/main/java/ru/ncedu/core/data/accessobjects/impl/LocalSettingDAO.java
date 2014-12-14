@@ -36,6 +36,7 @@ public class LocalSettingDAO implements SettingDAO {
         localStorage.add(new Setting("language", "en"));
         localStorage.add(new Setting("foo", "bar"));
         localStorage.add(new Setting("clever_title_like_deadmau5_would_use", "knife_party"));
+        localStorage.add(new Setting("default_page", "1"));
     }
     
     @Override
