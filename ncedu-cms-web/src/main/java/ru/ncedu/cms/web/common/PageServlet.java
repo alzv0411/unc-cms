@@ -17,6 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import com.google.gson.Gson;
+import ru.ncedu.core.jstree.JSTreeCache;
+
 @WebServlet(name = "PageServlet", urlPatterns = {"/page"})
 public class PageServlet extends HttpServlet {
 
@@ -25,6 +28,9 @@ public class PageServlet extends HttpServlet {
 
     @EJB
     RightBean rightBean;
+    
+    @EJB
+    JSTreeCache jsTreeCache;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -45,7 +51,11 @@ public class PageServlet extends HttpServlet {
 
             request.setAttribute("page", page);
             request.setAttribute("right", rightBean.getRight(Long.valueOf(pageId)));
-            request.setAttribute("jsTreeData", jsTreeBean.getPagesTreeData("1"));
+            
+            Gson gson = new Gson();
+            String jsTreeData = gson.toJson(jsTreeCache.getPageTree());
+            request.setAttribute("jsTreeData", jsTreeData);
+            //request.setAttribute("jsTreeData", jsTreeBean.getPagesTreeData("1"));
 
             request.getRequestDispatcher("/views/page/main.jsp").forward(request, response);
 
