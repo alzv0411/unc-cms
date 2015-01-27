@@ -1,5 +1,6 @@
 package ru.ncedu.cms.web.common;
 
+import com.google.gson.Gson;
 import ru.ncedu.core.data.accessobjects.UserDAO;
 import ru.ncedu.core.data.entities.User;
 import ru.ncedu.core.data.factories.DAOFactory;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import ru.ncedu.core.jstree.JSTreeCache;
 
 @WebServlet(name = "AdminConsoleServlet", urlPatterns = {"/adminConsole"})
 public class AdminConsoleServlet extends HttpServlet {
@@ -23,6 +25,9 @@ public class AdminConsoleServlet extends HttpServlet {
 
     @EJB
     JSTreeBean jsTreeBean;
+    
+    @EJB
+    JSTreeCache jsTreeCache;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -33,7 +38,11 @@ public class AdminConsoleServlet extends HttpServlet {
             List<User> users = userDAO.findAll();
             request.setAttribute("users", users);
 
-            request.setAttribute("jsTreeData", jsTreeBean.getGroupsTreeData("1"));
+            
+            Gson gson = new Gson();
+            String jsTreeData = gson.toJson(jsTreeCache.getGroupTree());
+            request.setAttribute("jsTreeData", jsTreeData);
+            //request.setAttribute("jsTreeData", jsTreeBean.getGroupsTreeData("1"));
 
             request.getRequestDispatcher("/views/admin/main.jsp").forward(request, response);
         }
