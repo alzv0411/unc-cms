@@ -44,7 +44,7 @@ public class JSTreeRecord {
      */
     public final void update(long parent, String text)
     {
-        this.parent = ((parent == 0) ? "#" : String.valueOf(parent));
+        this.parent = (this.id.equals(String.valueOf(parent))) ? "#" : String.valueOf(parent);
         this.text = text;
     }
     
