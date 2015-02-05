@@ -17,6 +17,7 @@ import ru.ncedu.HelloBean;
 import ru.ncedu.core.data.accessobjects.GroupDAO;
 import ru.ncedu.core.data.entities.Group;
 import ru.ncedu.core.data.factories.DAOFactory;
+import ru.ncedu.core.jstree.JSTreeCache;
 import ru.ncedu.core.utils.StringUtils;
 
 /**
@@ -28,6 +29,9 @@ public class InsGroupServlet extends HttpServlet {
     
     @EJB
     HelloBean helloBean;
+    
+    @EJB
+    JSTreeCache jsTreeCache;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -56,21 +60,22 @@ public class InsGroupServlet extends HttpServlet {
                 newGroup.setParentId(Long.valueOf(parentId));
                 newGroup.setName(name);
                 groupDAO.insert(newGroup);
+                jsTreeCache.addGroupRecord(newGroup);
                 
                 List<Group> groups = groupDAO.findAll();
                 request.setAttribute("groups", groups);
-                request.getRequestDispatcher("groups.jsp").forward(request, response);
+                request.getRequestDispatcher("/views/mockup/groups.jsp").forward(request, response);
             }
             else {
-            request.setAttribute("message", "group with id=" + groupId + " exist");
-            request.getRequestDispatcher("error.jsp").forward(request, response);
+                request.setAttribute("message", "group with id=" + groupId + " exist");
+                request.getRequestDispatcher("error.jsp").forward(request, response);
             }
         }
         else
-         {
-          List<Group> groups = groupDAO.findAll();
-          request.setAttribute("groups", groups);
-          request.getRequestDispatcher("insGroup.jsp").forward(request, response);   
+        {
+            List<Group> groups = groupDAO.findAll();
+            request.setAttribute("groups", groups);
+            request.getRequestDispatcher("/views/mockup/insGroup.jsp").forward(request, response);   
         }
         
         

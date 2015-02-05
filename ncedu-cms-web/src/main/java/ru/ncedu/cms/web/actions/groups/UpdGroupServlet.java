@@ -17,6 +17,7 @@ import ru.ncedu.HelloBean;
 import ru.ncedu.core.data.accessobjects.GroupDAO;
 import ru.ncedu.core.data.entities.Group;
 import ru.ncedu.core.data.factories.DAOFactory;
+import ru.ncedu.core.jstree.JSTreeCache;
 
 /**
  *
@@ -27,6 +28,9 @@ public class UpdGroupServlet extends HttpServlet {
     
     @EJB
     HelloBean helloBean;
+    
+    @EJB
+    JSTreeCache jsTreeCache;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,37 +52,30 @@ public class UpdGroupServlet extends HttpServlet {
         String name = request.getParameter("name");
         
         
-            if (groupId == null ) {
+        if (groupId == null ) {
             List<Group> groups = groupDAO.findAll();    
-            Group group = groupDAO.findById(Long.valueOf(id));
-            
+            Group group = groupDAO.findById(Long.valueOf(id));            
            
-            request.setAttribute("groups", groups);
-            
+            request.setAttribute("groups", groups);            
            
             request.setAttribute("groupId", group.getGroupId());           
             request.setAttribute("parentNum", group.getParentId());
             request.setAttribute("name", group.getName());
             
-            request.getRequestDispatcher("updGroup.jsp").forward(request, response);
-            
-            }
-            else {
+            request.getRequestDispatcher("/views/mockup/updGroup.jsp").forward(request, response);            
+        }
+        else {
             Group group = groupDAO.findById(Long.valueOf(groupId));
-           
-             group.setParentId(Long.valueOf(parentId));
-             group.setName(name);
-             groupDAO.update(group); 
-           
+
+            group.setParentId(Long.valueOf(parentId));
+            group.setName(name);
+            groupDAO.update(group);
+            jsTreeCache.updateGroupRecord(group);
+
             List<Group> groups = groupDAO.findAll();
             request.setAttribute("groups", groups);
-            request.getRequestDispatcher("groups.jsp").forward(request, response);
-            }
-        
-
-        
-        
-        
+            request.getRequestDispatcher("/views/mockup/groups.jsp").forward(request, response);
+        }
     }
     
 

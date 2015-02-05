@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import ru.ncedu.core.data.accessobjects.PageDAO;
 import ru.ncedu.core.data.entities.Page;
 import ru.ncedu.core.data.factories.DAOFactory;
+import ru.ncedu.core.jstree.JSTreeCache;
 import ru.ncedu.core.security.AuthentificationBean;
 
 /**
@@ -27,7 +28,8 @@ public class AddPageServlet extends HttpServlet {
     @EJB
     private AuthentificationBean authBean;
     
-    private PageDAO pageDAO;
+    @EJB
+    JSTreeCache jsTreeCache;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,9 +47,11 @@ public class AddPageServlet extends HttpServlet {
         Page page = pageDAO.add(new Page(0L, 0L, "New page", "Write here your content", 
                                 authBean.authorization().getUserId(), new Date(System.currentTimeMillis()),
                                 authBean.authorization().getUserId(), new Date(System.currentTimeMillis()), null));
+        
+        jsTreeCache.addPageRecord(page);
 
         request.setAttribute("page", page);
-        request.getRequestDispatcher("editpage.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/mockup/editpage.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
