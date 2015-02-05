@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import ru.ncedu.core.data.accessobjects.PageDAO;
 import ru.ncedu.core.data.entities.Page;
 import ru.ncedu.core.data.factories.DAOFactory;
+import ru.ncedu.core.jstree.JSTreeCache;
 import ru.ncedu.core.security.AuthentificationBean;
 import ru.ncedu.core.utils.StringUtils;
 
@@ -29,7 +30,8 @@ public class EditPageServlet extends HttpServlet {
     @EJB
     private AuthentificationBean authBean;
     
-    private PageDAO pageDAO;
+    @EJB
+    JSTreeCache jsTreeCache;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,8 +50,6 @@ public class EditPageServlet extends HttpServlet {
         if (StringUtils.isNotEmpty(pageId)) {
             Page page = pageDAO.findById(Long.valueOf(pageId));
             
-            //"page == null" case is computed by "editpage.jsp"
-            
             Map<String, String[]> parameters = request.getParameterMap();
             
             if(parameters.containsKey("content") && parameters.containsKey("title"))
@@ -61,10 +61,12 @@ public class EditPageServlet extends HttpServlet {
                 page.setTitle(title);
                 page.setModifiedBy(authBean.authorization().getUserId());
                 page.setModifiedWhen(new Date(System.currentTimeMillis()));
+                
+                jsTreeCache.updatePageRecord(page);
             }
             
             request.setAttribute("page", page);
-            request.getRequestDispatcher("editpage.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/mockup/editpage.jsp").forward(request, response);
         }
         else
         {

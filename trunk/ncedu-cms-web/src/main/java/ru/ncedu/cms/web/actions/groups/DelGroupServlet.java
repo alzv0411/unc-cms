@@ -17,6 +17,7 @@ import ru.ncedu.HelloBean;
 import ru.ncedu.core.data.accessobjects.GroupDAO;
 import ru.ncedu.core.data.entities.Group;
 import ru.ncedu.core.data.factories.DAOFactory;
+import ru.ncedu.core.jstree.JSTreeCache;
 import ru.ncedu.core.utils.StringUtils;
 
 /**
@@ -28,6 +29,9 @@ public class DelGroupServlet extends HttpServlet {
     
     @EJB
     HelloBean helloBean;
+    
+    @EJB
+    JSTreeCache jsTreeCache;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -49,13 +53,15 @@ public class DelGroupServlet extends HttpServlet {
                 request.setAttribute("message", "group with id=" + groupId + " doesn't exist");
                 request.getRequestDispatcher("error.jsp").forward(request, response);
             }
-            
-            groupDAO.delete(group);
+            else {
+                jsTreeCache.deleteGroupRecord(group.getGroupId());
+                groupDAO.delete(group);                
+            }
         }
 
         List<Group> groups = groupDAO.findAll();
         request.setAttribute("groups", groups);
-        request.getRequestDispatcher("groups.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/mockup/groups.jsp").forward(request, response);
         
         
     }

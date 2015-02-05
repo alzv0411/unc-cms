@@ -52,6 +52,7 @@ public class LocalPageDAO implements PageDAO {
     public Page add(Page entity)
     {
         entity.setPageId(AUTO_INCREMENT);
+        entity.setParentId(AUTO_INCREMENT);
         localStorage.add(entity);
         ++AUTO_INCREMENT;
         

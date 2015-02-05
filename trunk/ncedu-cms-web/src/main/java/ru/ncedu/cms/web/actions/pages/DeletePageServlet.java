@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import ru.ncedu.core.data.accessobjects.PageDAO;
 import ru.ncedu.core.data.entities.Page;
 import ru.ncedu.core.data.factories.DAOFactory;
+import ru.ncedu.core.jstree.JSTreeCache;
 import ru.ncedu.core.security.AuthentificationBean;
 import ru.ncedu.core.utils.StringUtils;
 
@@ -27,7 +28,8 @@ public class DeletePageServlet extends HttpServlet {
     @EJB
     private AuthentificationBean authBean;
     
-    private PageDAO pageDAO;
+    @EJB
+    JSTreeCache jsTreeCache;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,12 +50,13 @@ public class DeletePageServlet extends HttpServlet {
             
             if(page != null)
             {
-                pageDAO.delete(page);
+                jsTreeCache.deletePageRecord(page.getPageId());
+                pageDAO.delete(page);                
             }
             
             //"page == null" case is computed by "editpage.jsp"
             request.setAttribute("page", null);
-            request.getRequestDispatcher("editpage.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/mockup/editpage.jsp").forward(request, response);
         }
         else
         {
